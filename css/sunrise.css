@@ -1,0 +1,25 @@
+/* 
+    Document   : winter
+    Created on : 22.07.2013, 16:20:25
+    Author     : alexboo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body { 
+    background:#C39D6E;
+    background: #C39D6E url('../img/sunrise.jpg') 50% 0 no-repeat;
+}
+
+#sun{
+    bottom:-100px;
+}
+
+#content{
+    background:#FBE27D;
+}
+
+.menu .active{
+    background:#FBE27D;
+}
+

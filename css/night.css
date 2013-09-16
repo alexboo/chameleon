@@ -1,0 +1,24 @@
+/* 
+    Document   : winter
+    Created on : 22.07.2013, 16:20:25
+    Author     : alexboo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body { 
+    background: #000D1E url('../img/night.jpg') 50% 0 no-repeat;
+}
+
+#sun{
+    bottom:50%;
+}
+
+#content{
+    background:#A4BFB0;
+}
+
+
+.menu .active{
+    background:#A4BFB0;
+}

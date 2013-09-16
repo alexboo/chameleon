@@ -1,0 +1,93 @@
+/* 
+    Document   : style
+    Created on : 22.07.2013, 16:20:12
+    Author     : alexboo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+html {  
+  min-width: 900px;  
+}  
+
+body{
+    overflow: hidden;
+    background-size:cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#content{
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    -webkit-box-shadow: 0px 0px 3px 2px ;
+    box-shadow: 0px 0px 3px 2px ; 
+    width:70%;
+    height: 70%;
+    top:15%;
+    margin:auto;
+    background:#fff;
+    opacity: 0.9;
+    left:15%;
+    position: absolute;
+}
+
+.container{
+    padding:20px;
+    font-size: 14pt;
+}
+
+#content .container{
+    padding-right: 32%;
+}
+
+a{
+    color:#222;
+}
+
+li{
+    font-style: italic;
+    color:#111;
+    font-size: 13pt;
+    padding-top:7px;
+}
+
+#helper{
+    top:17%;
+    right:16%;
+    float:right;
+    width:20%;
+    height:66%;
+    min-height:280px;
+    position: absolute;
+    border-left:1px solid rgba(0,0,0,0.2);
+}
+
+#notes-content{
+    color:#444;
+}
+
+#helper .container h3{
+    margin-top:0;
+}
+
+.menu span{
+    cursor:pointer;
+    padding:2px 5px;
+    background:rgba(0,0,0,0.6);
+    border-bottom:1px solid #333;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px; 
+    color: #aaa;
+}
+
+.menu{
+    margin-top:-47px;
+}
+
+.menu .active{
+    border-bottom:0;
+    padding:4px 5px;
+    -webkit-box-shadow: 0px -2px 2px 0px ;
+    box-shadow: 0px -2px 2px 0px ; 
+    color: #000;
+}

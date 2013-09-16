@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Chameleon.js - javascript библиотека для автоматической смены дизайна сайта</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/chameleon.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="container">
+            <p class="menu">
+                <span id="sunrise">Рассвет</span>
+                <span id="morning">Утро</span>
+                <span id="noon">Полдень</span>
+                <span id="evening">Вечер</span>
+                <span id="sunset">Закат</span>
+                <span id="night">Ночь</span>
+            </p>
+            <h3>Chameleon.js</h3>
+            <p>Эта страница демонстирует работу javascript библиотеки Chameleon</p>
+            <p><strong>Chameleon</strong> - это библиотека для автоматического изменения дизайна сайта и не только.</p>
+            <p>Данная библиотека может следующее:</p>
+            <ol>
+                <li>Создавать правила для добавления или замены css файлов по определенному времени</li>
+                <li>Создавать правила для запуска пользовательских функций по определенному времени</li>
+                <li>Позволяет вручную запускать уже созданные правила</li>
+            </ol>
+            <p>Данная страница создана с использованием данной библиотеки, и если вы будете наблюдать за ней то сможете увидить что она как будто живет своей жизнью, дизайн страницы меняется сам каждые десять минут, заметки постоянно обновляются и все это сделано при помощи chameleon</p>
+            <p>Если вас заинтересовала эта библиотека вы можете скачать её <a href="https://github.com/alexboo/chameleon">здесь</a></p>
+            </div>
+        </div>
+        <div id="helper">
+            <div class="container">
+            <h3>Заметки</h3>
+            <div id="notes-content">
+            </div>
+            </div>
+        </div>
+        <!--<div id="sun"><img src="img/sun.jpg"></div>-->
+        <script type="text/javascript">
+            ch = new Chameleon();
+
+            var excludes = ["css/style.css"];
+            
+            var callback = function(id){
+                $('.menu span').removeClass('active');
+                $('#' + id).addClass('active');
+            };
+            
+            var sunrise = ch.createRule({files:["css/sunrise.css"], excludes:excludes, from:ch.createDate(0), to:ch.createDate(9), callback:function(){callback("sunrise");}});            
+            
+            var morning = ch.createRule({files:["css/morning.css"], excludes:excludes, from:ch.createDate(10), to:ch.createDate(19), callback:function(){callback("morning");}});  
+            
+            var noon = ch.createRule({files:["css/noon.css"], excludes:excludes, from:ch.createDate(20), to:ch.createDate(29), callback:function(){callback("noon");}});  
+            
+            var evening = ch.createRule({files:["css/evening.css"], excludes:excludes, from:ch.createDate(30), to:ch.createDate(39), callback:function(){callback("evening");}});  
+            
+            var sunset = ch.createRule({files:["css/sunset.css"], excludes:excludes, from:ch.createDate(40), to:ch.createDate(49), callback:function(){callback("sunset");}});  
+            
+            var night = ch.createRule({files:["css/night.css"], excludes:excludes, from:ch.createDate(50), to:ch.createDate(59), callback:function(){callback("night");}});  
+            
+            ch.addRule("sunrise", sunrise);
+            
+            ch.addRule("morning", morning);
+            
+            ch.addRule("noon", noon);
+            
+            ch.addRule("night", night);
+            
+            ch.addRule("evening", evening);
+            
+            ch.addRule("sunset", sunset);
+            
+            var notesFunction = function(){
+                var texts = {
+                    1: "<p>При создании правила вы можете указывать как промежуток времени так и одну простую дату.</p><p>Так указав первую минуту первого января вы можете запустить на сайте новогодний салют.</p>",
+                    2: "<p>При создании даты можно использовать символы \"*\" и \"&#47;\".</p><p>Символ \"*\" - означает что правило будет выполнять каждую секунду, минуту, час и т.д. в зависимости где вы её укажите. </p><p>Символ \"/\" - указывает шаг через который будет срабатывать правило. </p>",
+                    3: "<p>Вы всегда можете самостоятельно вызвать любое правило функцией execute(name), где name - это имя правила которое вы указали при его добавлении</p>",
+                    4: "<p>Что бы удалить правило вам нужно вызвать метод removeRule(name).</p><p>Если вместо названия правила указать \"all\" то будут удалены все правила.</p>"
+                };
+
+                var text = texts[Math.ceil(Math.random()*4)];
+
+                $('#notes-content').hide(300);
+                $('#notes-content').html(text);
+                $('#notes-content').show(500);
+            };
+
+            var test = ch.createRule({function:notesFunction, date:ch.createDate("*")});
+
+            ch.addRule("test", test);
+
+            ch.setFrequency(30);
+
+            ch.run();
+            
+            $(document).ready(function(){
+                
+                $('.menu span').on('click', function(){
+                    ch.stop("all");
+                    ch.execute($(this).attr('id'));
+                });
+                
+            });
+        </script>
+    </body>
+</html>

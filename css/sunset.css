@@ -1,0 +1,30 @@
+/* 
+    Document   : winter
+    Created on : 22.07.2013, 16:20:25
+    Author     : alexboo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body { 
+    background:#000000;
+    background: #000000 url('../img/sunset.jpg') 50% 0 no-repeat;
+}
+
+#sun{
+    bottom:-150px;
+}
+
+#content{
+    background:#834C38;
+    /*opacity: 0.8;*/
+}
+
+.container{
+    /*color:#F5AA1B;*/
+    color:#000;
+}
+
+.menu .active{
+    background:#834C38;
+}
