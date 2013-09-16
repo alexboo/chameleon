@@ -4,7 +4,7 @@ chameleon
 Chameleon - javascript library to automatically change the site design.
 
 
-How use it?
+How it use?
 
 Siple example
 
